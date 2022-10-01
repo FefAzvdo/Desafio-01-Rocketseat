@@ -6,6 +6,7 @@ import { useState } from "react";
 import { TodoType } from "./types";
 
 import styles from "./App.module.css";
+import { EmptyList } from "./components/EmptyList";
 
 function App() {
   const [todos, setTodos] = useState<TodoType[]>([]);
@@ -44,11 +45,16 @@ function App() {
       <Header />
       <div className={styles.wrapper}>
         <Form onCreateNewTodo={(todo) => handleClickCreateNewTodo(todo)} />
-        <TodoList
-          todoList={todos}
-          onCompleteTodo={(id) => handleClickCompleteTodo(id)}
-          onRemoveTodo={(id) => handleClickRemoveTodo(id)}
-        />
+
+        {todos.length === 0 ? (
+          <EmptyList />
+        ) : (
+          <TodoList
+            todoList={todos}
+            onCompleteTodo={(id) => handleClickCompleteTodo(id)}
+            onRemoveTodo={(id) => handleClickRemoveTodo(id)}
+          />
+        )}
       </div>
     </>
   );

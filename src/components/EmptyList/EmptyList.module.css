@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--gray-300);
+  margin-top: 4rem;
+}
+
+.wrapper > strong {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 140%;
+  text-align: center;
+}
+
+.wrapper > img {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 1rem;
+}
