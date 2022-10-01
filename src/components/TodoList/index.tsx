@@ -4,19 +4,26 @@ import styles from "./TodoList.module.css";
 
 type TodoListProps = {
   todoList: TodoType[];
+  onCompleteTodo: (id: number) => void;
 };
 
-export function TodoList({ todoList }: TodoListProps) {
+export function TodoList({ todoList, onCompleteTodo }: TodoListProps) {
+  const concludedTasks = todoList.filter((todo) => todo.isDone).length;
+
   return (
     <section className={styles.wrapper}>
       <div>
         <div className={styles.createdTasks}>
           <p>Tarefas criadas</p>
-          <span className={styles.counterSpan}> 0 </span>
+          <span className={styles.counterSpan}>{todoList.length}</span>
         </div>
         <div className={styles.concludedTasks}>
           <p>Concluídas</p>
-          <span className={styles.counterSpan}> 12 de 20 </span>
+          <span className={styles.counterSpan}>
+            <>
+              {concludedTasks} de {todoList.length}
+            </>
+          </span>
         </div>
       </div>
       <ul>
@@ -26,6 +33,7 @@ export function TodoList({ todoList }: TodoListProps) {
             id={todo.id}
             isDone={todo.isDone}
             todo={todo.todo}
+            onCompleteTodo={onCompleteTodo}
           />
         ))}
       </ul>

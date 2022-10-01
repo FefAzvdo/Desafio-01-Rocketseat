@@ -7,25 +7,42 @@ import { TodoType } from "./types";
 
 import styles from "./App.module.css";
 
-const MOCK = [
-  { id: 1, todo: "Arrumar o quarto", isDone: false },
-  { id: 2, todo: "Estudar ReactJs", isDone: true },
-];
-
 function App() {
   const [todos, setTodos] = useState<TodoType[]>([]);
+
+  function handleClickCreateNewTodo(todo: string) {
+    const id = Math.random() + todos.length;
+    const newTodo = { id, todo, isDone: false };
+    setTodos((todo) => [...todo, newTodo]);
+  }
+
+  function handleClickCompleteTodo(id: number) {
+    const edited = todos.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          isDone: !todo.isDone,
+        };
+      } else {
+        return {
+          ...todo,
+          isDone: todo.isDone,
+        };
+      }
+    });
+
+    setTodos(edited);
+  }
 
   return (
     <>
       <Header />
       <div className={styles.wrapper}>
-        <Form
-          onCreateNewTodo={(todo) => {
-            const newTodo = { id: 1, todo, isDone: false };
-            setTodos([...todos, newTodo]);
-          }}
+        <Form onCreateNewTodo={(todo) => handleClickCreateNewTodo(todo)} />
+        <TodoList
+          todoList={todos}
+          onCompleteTodo={(id) => handleClickCompleteTodo(id)}
         />
-        <TodoList todoList={todos} />
       </div>
     </>
   );

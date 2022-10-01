@@ -11,6 +11,7 @@ export function Form({ onCreateNewTodo }: FormProps) {
 
   function handleClickSubmitNewTask() {
     onCreateNewTodo(newTodo);
+    setNewTodo("");
   }
 
   function handleChangeNewTodoValue(e: React.ChangeEvent<HTMLInputElement>) {

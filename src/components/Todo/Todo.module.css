@@ -47,3 +47,6 @@
   align-items: center;
 }
 
+.doneTask {
+  text-decoration: line-through;
+}
