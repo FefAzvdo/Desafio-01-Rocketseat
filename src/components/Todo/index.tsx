@@ -1,6 +1,4 @@
 import { CheckCircle, Trash, Circle } from "phosphor-react";
-import { useState } from "react";
-import { TodoType } from "../../types";
 import styles from "./Todo.module.css";
 
 type TodoProps = {
