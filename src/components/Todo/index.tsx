@@ -16,25 +16,22 @@ export function Todo({
   todo,
   onCompleteTodo = () => {},
 }: TodoProps) {
-  const [isCompleted, setIsCompleted] = useState(isDone);
-
   return (
     <>
       <li className={styles.listItem} key={id}>
         <div
           className={styles.iconWrapperCenter}
           onClick={() => {
-            setIsCompleted(!isCompleted);
             onCompleteTodo(id);
           }}
         >
-          {isCompleted ? (
+          {isDone ? (
             <CheckCircle className={styles.iconCircle} size={25} />
           ) : (
             <Circle className={styles.iconCircle} size={25} />
           )}
         </div>
-        <p className={isCompleted ? styles.doneTask : ""}> {todo} </p>
+        <p className={isDone ? styles.doneTask : ""}> {todo} </p>
         <div className={styles.iconWrapperCenter}>
           <Trash className={styles.iconTrash} size={25} />
         </div>
