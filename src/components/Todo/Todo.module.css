@@ -1,0 +1,49 @@
+.listItem {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+
+  background: var(--gray-500);
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.06);
+
+  border: 1px solid var(--gray-400);
+  border-radius: 8px;
+
+  min-height: 4.5rem;
+
+}
+
+.listItem + .listItem {
+  margin-top: 1rem;
+}
+
+.iconCircle {
+  color: var(--blue-300);
+  cursor: pointer;
+  transition: color .2s;
+}
+
+.iconCircle:hover {
+  color: var(--purple-300);
+}
+
+.listItem > p {
+  font-size: 0.875rem;
+  padding: 1rem;
+}
+
+.iconTrash {
+  color: var(--gray-300);
+  cursor: pointer;
+  transition: color .2s;
+}
+
+.iconTrash:hover {
+  color: var(--red-500)
+}
+
+.iconWrapperCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

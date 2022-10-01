@@ -1,0 +1,47 @@
+.wrapper {
+  max-width: 68rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.wrapper > div {
+  display: flex;
+  justify-content: space-between
+}
+
+.wrapper > div > div {
+  display: flex;
+  flex-direction: row;
+  gap: .5rem
+}
+
+.createdTasks, .concludedTasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createdTasks > p {
+  line-height: 14px;
+  font-weight: 700;
+  color: var(--blue-300);
+}
+
+.counterSpan {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px 8px;
+  height: 19px;
+
+  background: var(--gray-300);
+  border-radius: 999px 
+}
+
+.concludedTasks > p {
+  line-height: 17;
+  font-weight: 700;
+  color: var(--purple-300 )
+}
