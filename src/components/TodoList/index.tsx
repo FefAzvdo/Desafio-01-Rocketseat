@@ -5,9 +5,14 @@ import styles from "./TodoList.module.css";
 type TodoListProps = {
   todoList: TodoType[];
   onCompleteTodo: (id: number) => void;
+  onRemoveTodo: (id: number) => void;
 };
 
-export function TodoList({ todoList, onCompleteTodo }: TodoListProps) {
+export function TodoList({
+  todoList,
+  onCompleteTodo,
+  onRemoveTodo,
+}: TodoListProps) {
   const concludedTasks = todoList.filter((todo) => todo.isDone).length;
 
   return (
@@ -34,6 +39,7 @@ export function TodoList({ todoList, onCompleteTodo }: TodoListProps) {
             isDone={todo.isDone}
             todo={todo.todo}
             onCompleteTodo={onCompleteTodo}
+            onRemoveTodo={onRemoveTodo}
           />
         ))}
       </ul>

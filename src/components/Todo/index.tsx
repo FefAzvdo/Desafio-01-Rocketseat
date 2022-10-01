@@ -8,6 +8,7 @@ type TodoProps = {
   isDone: boolean;
   todo: string;
   onCompleteTodo?: (id: number) => void;
+  onRemoveTodo?: (id: number) => void;
 };
 
 export function Todo({
@@ -15,6 +16,7 @@ export function Todo({
   isDone,
   todo,
   onCompleteTodo = () => {},
+  onRemoveTodo = () => {},
 }: TodoProps) {
   return (
     <>
@@ -32,7 +34,12 @@ export function Todo({
           )}
         </div>
         <p className={isDone ? styles.doneTask : ""}> {todo} </p>
-        <div className={styles.iconWrapperCenter}>
+        <div
+          className={styles.iconWrapperCenter}
+          onClick={() => {
+            onRemoveTodo(id);
+          }}
+        >
           <Trash className={styles.iconTrash} size={25} />
         </div>
       </li>

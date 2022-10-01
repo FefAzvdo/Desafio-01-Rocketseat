@@ -34,6 +34,11 @@ function App() {
     setTodos(edited);
   }
 
+  function handleClickRemoveTodo(id: number) {
+    const listWithRemovedItem = todos.filter((todo) => todo.id !== id);
+    setTodos(listWithRemovedItem);
+  }
+
   return (
     <>
       <Header />
@@ -42,6 +47,7 @@ function App() {
         <TodoList
           todoList={todos}
           onCompleteTodo={(id) => handleClickCompleteTodo(id)}
+          onRemoveTodo={(id) => handleClickRemoveTodo(id)}
         />
       </div>
     </>
