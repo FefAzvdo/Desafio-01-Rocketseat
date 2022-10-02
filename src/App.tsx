@@ -1,7 +1,7 @@
 import { Header } from "./components/Header";
 import { Form } from "./components/Form";
 import { TodoList } from "./components/TodoList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { TodoType } from "./types";
 
@@ -9,7 +9,18 @@ import styles from "./App.module.css";
 import { EmptyList } from "./components/EmptyList";
 
 function App() {
-  const [todos, setTodos] = useState<TodoType[]>([]);
+  const storagedTodos = JSON.parse(localStorage.getItem("todos") ?? "[]");
+
+  const [todos, setTodos] = useState<TodoType[]>(storagedTodos);
+
+  useEffect(() => {
+    saveOnLocalStorage(todos);
+  }, [todos]);
+
+  function saveOnLocalStorage(todoList: TodoType[]) {
+    const str = JSON.stringify(todoList);
+    localStorage.setItem("todos", str);
+  }
 
   function handleClickCreateNewTodo(todo: string) {
     const id = Math.random() + todos.length;
