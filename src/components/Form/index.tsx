@@ -1,5 +1,5 @@
 import { PlusCircle } from "phosphor-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./Form.module.css";
 
 interface FormProps {
@@ -9,7 +9,8 @@ interface FormProps {
 export function Form({ onCreateNewTodo }: FormProps) {
   const [newTodo, setNewTodo] = useState("");
 
-  function handleClickSubmitNewTask() {
+  function handleClickSubmitNewTask(e: React.FormEvent) {
+    e.preventDefault();
     onCreateNewTodo(newTodo);
     setNewTodo("");
   }
